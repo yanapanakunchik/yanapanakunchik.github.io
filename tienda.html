@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda - Yanapanakunchik</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="tienda.css" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1><a href="index.html">Yanapanakunchik</a></h1>
+    </div>
+    <nav>
+      <a href="index.html#objetivo">Nuestro Objetivo</a>
+      <a href="tienda.html">Tienda</a>
+      <a href="index.html#contacto">Comunícate con Nosotros</a>
+    </nav>
+    <div id="auth-container">
+        <div id="g_id_signin"></div>
+        <div id="user-profile" style="display: none;">
+            <img id="user-pic" src="" alt="User Picture">
+            <span id="user-name"></span>
+            <button id="logout-button" onclick="signOut();">Cerrar Sesión</button>
+        </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="tienda-productos">
+      <h2>Nuestros Productos</h2>
+      <div class="productos-grid">
+        <div class="producto">
+          <img src="https://via.placeholder.com/300x300.png?text=Chompa+de+Alpaca" alt="Chompa de Alpaca" />
+          <h3>Chompa de Alpaca</h3>
+          <p>S/ 120.00</p>
+          <button class="add-to-cart-btn">Añadir al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="https://via.placeholder.com/300x300.png?text=Gorra+con+diseño" alt="Gorra con diseño" />
+          <h3>Gorra con diseño</h3>
+          <p>S/ 35.00</p>
+          <button class="add-to-cart-btn">Añadir al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="https://via.placeholder.com/300x300.png?text=Polo+de+algodón" alt="Polo de algodón" />
+          <h3>Polo de algodón</h3>
+          <p>S/ 45.00</p>
+          <button class="add-to-cart-btn">Añadir al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="https://via.placeholder.com/300x300.png?text=Artesanía+de+cerámica" alt="Artesanía de cerámica" />
+          <h3>Artesanía de cerámica</h3>
+          <p>S/ 50.00</p>
+          <button class="add-to-cart-btn">Añadir al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="https://via.placeholder.com/300x300.png?text=Manta+tejida" alt="Manta tejida" />
+          <h3>Manta tejida</h3>
+          <p>S/ 150.00</p>
+          <button class="add-to-cart-btn">Añadir al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="https://via.placeholder.com/300x300.png?text=Bolso+de+cuero" alt="Bolso de cuero" />
+          <h3>Bolso de cuero</h3>
+          <p>S/ 95.00</p>
+          <button class="add-to-cart-btn">Añadir al carrito</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <h2>Comunícate con Nosotros</h2>
+    <p>¿Interesado en nuestros productos o en apoyar nuestra causa? Contáctanos.</p>
+    <p>Email: <a href="mailto:info@yanapanakunchik.com">info@yanapanakunchik.com</a></p>
+    <p>Teléfono: +51 987 654 321</p>
+  </footer>
+
+  <script>
+    function decodeJwtResponse(token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+    }
+
+    function handleCredentialResponse(response) {
+      const responsePayload = decodeJwtResponse(response.credential);
+      console.log("Logged in as: " + responsePayload.name);
+      
+      sessionStorage.setItem("userName", responsePayload.name);
+      sessionStorage.setItem("userPic", responsePayload.picture);
+      sessionStorage.setItem("userCredential", response.credential);
+
+      updateUI(responsePayload.name, responsePayload.picture);
+    }
+
+    function updateUI(name, pic) {
+        document.getElementById('g_id_signin').style.display = "none";
+        const userProfile = document.getElementById('user-profile');
+        if (userProfile) {
+            userProfile.style.display = "flex";
+            document.getElementById('user-pic').src = pic;
+            document.getElementById('user-name').innerText = name;
+        }
+    }
+
+    function signOut() {
+        google.accounts.id.disableAutoSelect();
+        sessionStorage.clear();
+        document.getElementById('g_id_signin').style.display = "block";
+        const userProfile = document.getElementById('user-profile');
+        if (userProfile) {
+            userProfile.style.display = "none";
+        }
+        console.log('User signed out.');
+    }
+
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "79813298776-jctbcrchdefnv2vdbpqvj2fghf0gjqgf.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+      });
+      
+      const userCredential = sessionStorage.getItem("userCredential");
+      if (userCredential) {
+        const payload = decodeJwtResponse(userCredential);
+        updateUI(payload.name, payload.picture);
+      } else {
+        google.accounts.id.renderButton(
+          document.getElementById("g_id_signin"),
+          { theme: "outline", size: "large", text: "signin_with", shape: "rectangular", logo_alignment: "left" }
+        );
+      }
+    };
+  </script>
+</body>
+</html>
