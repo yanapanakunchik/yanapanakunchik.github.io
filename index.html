@@ -250,6 +250,133 @@
       });
     });
 
+    // Enhanced login validation
+    function validateLoginForm(formData) {
+        const errors = [];
+        
+        if (!formData.username || formData.username.trim() === '') {
+            errors.push('El usuario o correo es requerido');
+        }
+        
+        if (!formData.password || formData.password.trim() === '') {
+            errors.push('La contraseña es requerida');
+        }
+        
+        if (formData.username && formData.username.includes('@')) {
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.username)) {
+                errors.push('El formato del correo electrónico no es válido');
+            }
+        }
+        
+        return errors;
+    }
+
+    function showLoginError(message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'login-error';
+        errorDiv.textContent = message;
+        errorDiv.style.cssText = `
+            background: #ffebee;
+            color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px solid #ffcdd2;
+            font-size: 14px;
+        `;
+        
+        const form = document.getElementById('login-form');
+        const existingError = form.querySelector('.login-error');
+        if (existingError) {
+            existingError.remove();
+        }
+        form.insertBefore(errorDiv, form.firstChild);
+        
+        setTimeout(() => {
+            if (errorDiv.parentNode) {
+                errorDiv.remove();
+            }
+        }, 5000);
+    }
+
+    function showLoginSuccess(message) {
+        const successDiv = document.createElement('div');
+        successDiv.className = 'login-success';
+        successDiv.textContent = message;
+        successDiv.style.cssText = `
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px solid #c8e6c9;
+            font-size: 14px;
+        `;
+        
+        const form = document.getElementById('login-form');
+        const existingSuccess = form.querySelector('.login-success');
+        if (existingSuccess) {
+            existingSuccess.remove();
+        }
+        form.insertBefore(successDiv, form.firstChild);
+        
+        setTimeout(() => {
+            if (successDiv.parentNode) {
+                successDiv.remove();
+            }
+        }, 3000);
+    }
+
+    // Enhanced form submission for login
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('login-form');
+        if (loginForm) {
+            loginForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const formData = {
+                    username: this.username.value.trim(),
+                    password: this.password.value
+                };
+                
+                // Validate form
+                const errors = validateLoginForm(formData);
+                if (errors.length > 0) {
+                    showLoginError(errors.join(', '));
+                    return;
+                }
+                
+                try {
+                    const response = await fetch(`http://localhost:3000/users?username=${encodeURIComponent(formData.username)}&password=${encodeURIComponent(formData.password)}`);
+                    const users = await response.json();
+                    
+                    if (users.length > 0) {
+                        // Login successful
+                        sessionStorage.setItem('user', JSON.stringify(users[0]));
+                        showLoginSuccess('Inicio de sesión exitoso');
+                        closeLoginModal();
+                        
+                        // Update UI to show logged in state
+                        const authActions = document.getElementById('auth-actions');
+                        if (authActions) authActions.style.display = 'none';
+                        
+                        // Reload to update UI
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1000);
+                    } else {
+                        showLoginError('Usuario o contraseña incorrectos');
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    showLoginError('Error de conexión. Verifica que el servidor esté ejecutándose.');
+                }
+            });
+        }
+    });
+
     window.onload = function () {
       google.accounts.id.initialize({
         client_id: "79813298776-jctbcrchdefnv2vdbpqvj2fghf0gjqgf.apps.googleusercontent.com",
