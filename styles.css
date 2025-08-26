@@ -12,6 +12,7 @@
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
+  color-scheme: light;
 }
 
 * {
@@ -22,7 +23,7 @@ body {
   font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--background-color);
+  background-color: var(--background-color) !important;
   color: var(--text-color);
   line-height: 1.6;
   overflow-x: hidden;
@@ -32,6 +33,9 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Guard: avoid stray Google button outside modal */
+#g_id_onload, #g_id_signin { display: none !important; }
 
 .container {
     width: 100%;
@@ -310,6 +314,8 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .site-header .logo h1 {
@@ -656,6 +662,12 @@ a:hover {
         transform: scale(1);
     }
 }
+
+/* Ensure headings never collide visually */
+.page-section h2 { word-break: break-word; }
+
+/* Minor container typography guard */
+.container { overflow-wrap: anywhere; }
 
 /* Objetivo Section */
 .objetivo-content {
