@@ -10,74 +10,106 @@
 </head>
 <body>
   <header>
-    <div class="logo">
-      <h1><a href="index.html">Yanapanakunchik</a></h1>
-    </div>
-    <nav>
-      <a href="index.html#objetivo">Nuestro Objetivo</a>
-      <a href="tienda.html">Tienda</a>
-      <a href="index.html#contacto">Comunícate con Nosotros</a>
-    </nav>
-    <div id="auth-container">
-        <div id="g_id_signin"></div>
-        <div id="user-profile" style="display: none;">
-            <img id="user-pic" src="" alt="User Picture">
-            <span id="user-name"></span>
-            <button id="logout-button" onclick="signOut();">Cerrar Sesión</button>
-        </div>
+    <div class="container">
+      <div class="logo">
+        <h1><a href="index.html">Yanapanakunchik</a></h1>
+      </div>
+      <nav>
+        <a href="index.html#objetivo">Nuestro Objetivo</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="index.html#contacto">Comunícate con Nosotros</a>
+      </nav>
+      <div class="cart-icon">
+        <a href="#" id="cart-link" class="cart-button">
+          <span class="cart-icon-text">🛒</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+      </div>
+      <div class="auth-actions" id="auth-actions">
+        <button class="login-button" id="open-login-modal">Iniciar sesión</button>
+      </div>
+      <div id="auth-container">
+          <div id="g_id_signin" style="display:none"></div>
+          <div id="user-profile" style="display: none;">
+              <img id="user-pic" src="" alt="User Picture">
+              <span id="user-name"></span>
+              <button id="logout-button" onclick="signOut();">Cerrar Sesión</button>
+          </div>
+      </div>
     </div>
   </header>
 
   <main>
+    <section class="page-title">
+      <div class="container">
+        <h1>Nuestra Tienda</h1>
+        <p>Descubre productos únicos y auténticos de los artesanos de Cusco</p>
+      </div>
+    </section>
+
     <section id="tienda-productos">
-      <h2>Nuestros Productos</h2>
-      <div class="productos-grid">
-        <div class="producto">
-          <img src="https://via.placeholder.com/300x300.png?text=Chompa+de+Alpaca" alt="Chompa de Alpaca" />
-          <h3>Chompa de Alpaca</h3>
-          <p>S/ 120.00</p>
-          <button class="add-to-cart-btn">Añadir al carrito</button>
+      <div class="container">
+        <div class="productos-grid" id="productos-grid">
+          <!-- Los productos se cargarán aquí dinámicamente -->
         </div>
-        <div class="producto">
-          <img src="https://via.placeholder.com/300x300.png?text=Gorra+con+diseño" alt="Gorra con diseño" />
-          <h3>Gorra con diseño</h3>
-          <p>S/ 35.00</p>
-          <button class="add-to-cart-btn">Añadir al carrito</button>
+      </div>
+    </section>
+
+    <section id="carrito-compras" style="display: none;">
+      <div class="container">
+        <h2>Carrito de Compras</h2>
+        <div id="cart-items" class="cart-items">
+          <!-- Los productos del carrito se mostrarán aquí -->
         </div>
-        <div class="producto">
-          <img src="https://via.placeholder.com/300x300.png?text=Polo+de+algodón" alt="Polo de algodón" />
-          <h3>Polo de algodón</h3>
-          <p>S/ 45.00</p>
-          <button class="add-to-cart-btn">Añadir al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="https://via.placeholder.com/300x300.png?text=Artesanía+de+cerámica" alt="Artesanía de cerámica" />
-          <h3>Artesanía de cerámica</h3>
-          <p>S/ 50.00</p>
-          <button class="add-to-cart-btn">Añadir al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="https://via.placeholder.com/300x300.png?text=Manta+tejida" alt="Manta tejida" />
-          <h3>Manta tejida</h3>
-          <p>S/ 150.00</p>
-          <button class="add-to-cart-btn">Añadir al carrito</button>
-        </div>
-        <div class="producto">
-          <img src="https://via.placeholder.com/300x300.png?text=Bolso+de+cuero" alt="Bolso de cuero" />
-          <h3>Bolso de cuero</h3>
-          <p>S/ 95.00</p>
-          <button class="add-to-cart-btn">Añadir al carrito</button>
+        <div class="cart-summary">
+          <p class="cart-total">Total: S/ <span id="cart-total">0.00</span></p>
+          <button id="checkout-btn" class="checkout-button">Proceder al Pago</button>
         </div>
       </div>
     </section>
   </main>
 
-  <footer id="contacto">
-    <h2>Comunícate con Nosotros</h2>
-    <p>¿Interesado en nuestros productos o en apoyar nuestra causa? Contáctanos.</p>
-    <p>Email: <a href="mailto:info@yanapanakunchik.com">info@yanapanakunchik.com</a></p>
-    <p>Teléfono: +51 987 654 321</p>
+  <footer id="contacto" class="site-footer">
+    <div class="container">
+      <h2>Comunícate con Nosotros</h2>
+      <p>¿Interesado en nuestros productos o en apoyar nuestra causa? Contáctanos.</p>
+      <p>Email: <a href="mailto:info@yanapanakunchik.com">info@yanapanakunchik.com</a></p>
+      <p>Teléfono: +51 987 654 321</p>
+    </div>
   </footer>
+
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Iniciar sesión</div>
+        <button class="modal-close" id="close-login-modal" aria-label="Cerrar">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="tabs">
+          <button class="tab-button active" data-tab="google-tab">Google</button>
+          <button class="tab-button" data-tab="email-tab">Correo / Usuario</button>
+        </div>
+        <div class="tab-panel active" id="google-tab">
+          <div id="g_id_signin_modal"></div>
+        </div>
+        <div class="tab-panel" id="email-tab">
+          <form id="login-form">
+            <div class="form-group">
+              <label for="username">Usuario o correo</label>
+              <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Contraseña</label>
+              <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Entrar</button>
+          </form>
+          <p style="text-align:center;margin-top:10px;">¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     function decodeJwtResponse(token) {
@@ -98,10 +130,13 @@
       sessionStorage.setItem("userCredential", response.credential);
 
       updateUI(responsePayload.name, responsePayload.picture);
+      closeLoginModal();
     }
 
     function updateUI(name, pic) {
         document.getElementById('g_id_signin').style.display = "none";
+        const authActions = document.getElementById('auth-actions');
+        if (authActions) authActions.style.display = 'none';
         const userProfile = document.getElementById('user-profile');
         if (userProfile) {
             userProfile.style.display = "flex";
@@ -113,6 +148,8 @@
     function signOut() {
         google.accounts.id.disableAutoSelect();
         sessionStorage.clear();
+        const authActions = document.getElementById('auth-actions');
+        if (authActions) authActions.style.display = 'flex';
         document.getElementById('g_id_signin').style.display = "block";
         const userProfile = document.getElementById('user-profile');
         if (userProfile) {
@@ -120,6 +157,58 @@
         }
         console.log('User signed out.');
     }
+
+    function loadProducts() {
+      fetch('db.json')
+        .then(response => response.json())
+        .then(data => {
+          const productsGrid = document.getElementById('productos-grid');
+          productsGrid.innerHTML = '';
+          data.products.forEach((product, index) => {
+            const productElement = document.createElement('div');
+            productElement.className = 'producto';
+            productElement.style.animationDelay = `${index * 0.1}s`;
+            productElement.innerHTML = `
+              <img src="${product.image}" alt="${product.name}" loading="lazy" />
+              <h3>${product.name}</h3>
+              <p>S/ ${product.price.toFixed(2)}</p>
+              <button class="add-to-cart-btn" data-id="${product.id}">
+                <span class="btn-text">Añadir al carrito</span>
+                <span class="btn-icon">+</span>
+              </button>
+            `;
+            productsGrid.appendChild(productElement);
+          });
+        })
+        .catch(error => {
+          console.error('Error loading products:', error);
+          document.getElementById('productos-grid').innerHTML = 
+            '<p class="error-message">Error al cargar los productos. Por favor, intenta de nuevo.</p>';
+        });
+    }
+
+    // Modal logic
+    const modalEl = document.getElementById('login-modal');
+    const openBtn = document.getElementById('open-login-modal');
+    const closeBtn = document.getElementById('close-login-modal');
+
+    function openLoginModal() { modalEl.classList.add('open'); }
+    function closeLoginModal() { modalEl.classList.remove('open'); }
+
+    if (openBtn) openBtn.addEventListener('click', openLoginModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeLoginModal);
+    modalEl.addEventListener('click', (e) => { if (e.target === modalEl) closeLoginModal(); });
+
+    // Tabs
+    document.querySelectorAll('.tab-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const panel = document.getElementById(btn.dataset.tab);
+        if (panel) panel.classList.add('active');
+      });
+    });
 
     window.onload = function () {
       google.accounts.id.initialize({
@@ -133,11 +222,132 @@
         updateUI(payload.name, payload.picture);
       } else {
         google.accounts.id.renderButton(
-          document.getElementById("g_id_signin"),
+          document.getElementById("g_id_signin_modal"),
           { theme: "outline", size: "large", text: "signin_with", shape: "rectangular", logo_alignment: "left" }
         );
       }
+
+      loadProducts();
+
+      const cartLink = document.getElementById('cart-link');
+      const cartSection = document.getElementById('carrito-compras');
+
+      cartLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isCartVisible = cartSection.style.display === 'block';
+        cartSection.style.display = isCartVisible ? 'none' : 'block';
+        
+        if (!isCartVisible) {
+            cartSection.classList.add('slide-in');
+        } else {
+            cartSection.classList.remove('slide-in');
+        }
+      });
+
+      document.getElementById('productos-grid').addEventListener('click', (e) => {
+        if (e.target.closest('.add-to-cart-btn')) {
+          const button = e.target.closest('.add-to-cart-btn');
+          const productId = button.dataset.id;
+          addToCart(productId);
+          showCartNotification();
+        }
+      });
+
+      // Checkout button
+      document.getElementById('checkout-btn').addEventListener('click', function() {
+        if (cart.length === 0) {
+          alert('Tu carrito está vacío');
+          return;
+        }
+        alert('¡Gracias por tu compra! Te contactaremos pronto para coordinar el envío.');
+        cart = [];
+        updateCartUI();
+        document.getElementById('carrito-compras').style.display = 'none';
+      });
     };
+
+    let cart = [];
+    let allProducts = [];
+
+    fetch('db.json')
+      .then(response => response.json())
+      .then(data => {
+        allProducts = data.products;
+      })
+      .catch(error => {
+        console.error('Error loading products data:', error);
+      });
+
+    function addToCart(productId) {
+      const product = allProducts.find(p => p.id == productId);
+      if (product) {
+        const cartItem = cart.find(item => item.id == productId);
+        if (cartItem) {
+          cartItem.quantity++;
+        } else {
+          cart.push({ ...product, quantity: 1 });
+        }
+        updateCartUI();
+      }
+    }
+
+    function updateCartUI() {
+      const cartItemsContainer = document.getElementById('cart-items');
+      const cartCount = document.getElementById('cart-count');
+      const cartTotal = document.getElementById('cart-total');
+
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+      let count = 0;
+
+      cart.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'cart-item';
+        itemElement.innerHTML = `
+          <div class="cart-item-info">
+            <span class="cart-item-name">${item.name}</span>
+            <span class="cart-item-quantity">Cantidad: ${item.quantity}</span>
+          </div>
+          <div class="cart-item-price">
+            <span>S/ ${(item.price * item.quantity).toFixed(2)}</span>
+            <button class="remove-item" data-id="${item.id}">×</button>
+          </div>
+        `;
+        cartItemsContainer.appendChild(itemElement);
+        total += item.price * item.quantity;
+        count += item.quantity;
+      });
+
+      cartCount.innerText = count;
+      cartTotal.innerText = total.toFixed(2);
+
+      // Add remove functionality
+      document.querySelectorAll('.remove-item').forEach(button => {
+        button.addEventListener('click', function() {
+          const productId = this.dataset.id;
+          removeFromCart(productId);
+        });
+      });
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id != productId);
+      updateCartUI();
+    }
+
+    // Cart notification helper
+    function showCartNotification() {
+      const notification = document.createElement('div');
+      notification.className = 'cart-notification';
+      notification.textContent = 'Producto añadido al carrito';
+      document.body.appendChild(notification);
+      setTimeout(() => notification.classList.add('show'), 50);
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+      }, 2000);
+    }
   </script>
+  <script src="auth.js"></script>
 </body>
 </html>

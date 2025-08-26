@@ -5,5 +5,43 @@
       "username": "huallpasulloa@gmail.com",
       "password": "28dejulio"
     }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Chompa de Alpaca",
+      "price": 120.00,
+      "image": "https://picsum.photos/seed/chompa/300/300"
+    },
+    {
+      "id": 2,
+      "name": "Gorra con diseño",
+      "price": 35.00,
+      "image": "https://picsum.photos/seed/gorra/300/300"
+    },
+    {
+      "id": 3,
+      "name": "Polo de algodón",
+      "price": 45.00,
+      "image": "https://picsum.photos/seed/polo/300/300"
+    },
+    {
+      "id": 4,
+      "name": "Artesanía de cerámica",
+      "price": 50.00,
+      "image": "https://picsum.photos/seed/ceramica/300/300"
+    },
+    {
+      "id": 5,
+      "name": "Manta tejida",
+      "price": 150.00,
+      "image": "https://picsum.photos/seed/manta/300/300"
+    },
+    {
+      "id": 6,
+      "name": "Bolso de cuero",
+      "price": 95.00,
+      "image": "https://picsum.photos/seed/bolso/300/300"
+    }
   ]
 }

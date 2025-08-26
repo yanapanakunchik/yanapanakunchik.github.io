@@ -13,43 +13,52 @@
   -->
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <h1>Yanapanakunchik</h1>
-    </div>
-    <nav>
-      <a href="#objetivo">Nuestro Objetivo</a>
-      <a href="tienda.html">Tienda</a>
-      <a href="#contacto">Comunícate con Nosotros</a>
-    </nav>
-    <div id="auth-container">
-        <div id="g_id_signin"></div>
-        <div id="user-profile" style="display: none;">
-            <img id="user-pic" src="" alt="User Picture">
-            <span id="user-name"></span>
-            <button id="logout-button" onclick="signOut();">Cerrar Sesión</button>
-        </div>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <h1>Yanapanakunchik</h1>
+      </div>
+      <nav class="main-nav">
+        <a href="#objetivo">Nuestro Objetivo</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="auth-actions" id="auth-actions">
+        <button class="login-button" id="open-login-modal">Iniciar sesión</button>
+      </div>
+      <div id="auth-container" style="display:none">
+          <div id="g_id_signin" style="display:none"></div>
+          <div id="user-profile" style="display: none;">
+              <img id="user-pic" src="" alt="User Picture">
+              <span id="user-name"></span>
+              <button id="logout-button" onclick="signOut();">Cerrar Sesión</button>
+          </div>
+      </div>
     </div>
   </header>
 
   <main>
     <section id="hero">
-      <div class="hero-content">
-        <h2>Ayudando a crecer a los artesanos de Cusco</h2>
-        <p>Promovemos el comercio justo y sostenible para mejorar la calidad de vida de las comunidades locales.</p>
-        <a href="tienda.html" class="cta-button">Explora nuestros productos</a>
+      <div class="container">
+        <div class="hero-content">
+          <h2>Ayudando a crecer a los artesanos de Cusco</h2>
+          <p>Promovemos el comercio justo y sostenible para mejorar la calidad de vida de las comunidades locales.</p>
+          <a href="tienda.html" class="cta-button">Explora nuestros productos</a>
+        </div>
       </div>
     </section>
 
-    <section id="objetivo">
-      <h2>Nuestro Objetivo</h2>
-      <div class="objetivo-content">
-        <div class="objetivo-text">
-          <h3>Misión y Visión</h3>
-          <p>Nuestra misión es crear un puente directo entre los talentosos artesanos de Cusco y tú. Buscamos eliminar intermediarios para asegurar un pago justo y un desarrollo sostenible para las comunidades productoras. Creemos en un comercio que respeta la cultura, la tradición y el medio ambiente.</p>
-        </div>
-        <div class="objetivo-image">
-          <img src="https://via.placeholder.com/400x300.png?text=Artesanos+de+Cusco" alt="Artesanos de Cusco" />
+    <section id="objetivo" class="page-section">
+      <div class="container">
+        <h2>Nuestro Objetivo</h2>
+        <div class="objetivo-content">
+          <div class="objetivo-text">
+            <h3>Misión y Visión</h3>
+            <p>Nuestra misión es crear un puente directo entre los talentosos artesanos de Cusco y tú. Buscamos eliminar intermediarios para asegurar un pago justo y un desarrollo sostenible para las comunidades productoras. Creemos en un comercio que respeta la cultura, la tradición y el medio ambiente.</p>
+          </div>
+          <div class="objetivo-image">
+            <img src="https://via.placeholder.com/400x300.png?text=Artesanos+de+Cusco" alt="Artesanos de Cusco" />
+          </div>
         </div>
       </div>
     </section>
@@ -69,7 +78,8 @@
       </script>
     -->
 
-    <section id="ayudados">
+    <section id="ayudados" class="page-section">
+      <div class="container">
         <h2>Personas Ayudadas</h2>
         <div class="personas-ayudadas">
             <div class="persona">
@@ -88,16 +98,83 @@
                 <p>"Como familia, hemos podido organizarnos y mejorar nuestra producción. Yanapanakunchik nos ha dado el apoyo que necesitábamos."</p>
             </div>
         </div>
+      </div>
     </section>
 
+    <section id="integrantes" class="page-section">
+      <div class="container">
+        <h2>Integrantes</h2>
+        <div class="integrantes-container">
+          <div class="integrante">
+            <img src="photos/Naomi Adriana Cusi Sullca.jpg" alt="Naomi Adriana Cusi Sullca" />
+            <h4>Naomi Adriana Cusi Sullca</h4>
+            <p>Gerente General</p>
+          </div>
+          <div class="integrante">
+            <img src="photos/Yhon Franco Gomez Colquer.jpg" alt="Yhon Franco Gomez Colquer" />
+            <h4>Yhon Franco Gomez Colquer</h4>
+            <p>Gerente de Recursos Humanos</p>
+          </div>
+          <div class="integrante">
+            <img src="photos/Daniela Sami Cusihuallpa Cusicuna.jpg" alt="Daniela Sami Cusihuallpa Cusicuna" />
+            <h4>Daniela Sami Cusihuallpa Cusicuna</h4>
+            <p>Gerente de Marketing</p>
+          </div>
+          <div class="integrante">
+            <img src="photos/Abraham Huallpa Sullo.jpg" alt="Abraham Huallpa Sullo" />
+            <h4>Abraham Huallpa Sullo</h4>
+            <p>Gerente de T.I.</p>
+          </div>
+          <div class="integrante">
+            <img src="photos/Solange Yadira Cueva Chacmani.jpg" alt="Solange Yadira Cueva Chacmani" />
+            <h4>Solange Yadira Cueva Chacmani</h4>
+            <p>Gerente de Finanzas</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer id="contacto">
-    <h2>Comunícate con Nosotros</h2>
-    <p>¿Interesado en nuestros productos o en apoyar nuestra causa? Contáctanos.</p>
-    <p>Email: <a href="mailto:info@yanapanakunchik.com">info@yanapanakunchik.com</a></p>
-    <p>Teléfono: +51 987 654 321</p>
+  <footer id="contacto" class="site-footer">
+    <div class="container">
+      <h2>Comunícate con Nosotros</h2>
+      <p>¿Interesado en nuestros productos o en apoyar nuestra causa? Contáctanos.</p>
+      <p>Email: <a href="mailto:info@yanapanakunchik.com">info@yanapanakunchik.com</a> | Teléfono: +51 987 654 321</p>
+    </div>
   </footer>
+
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Iniciar sesión</div>
+        <button class="modal-close" id="close-login-modal" aria-label="Cerrar">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="tabs">
+          <button class="tab-button active" data-tab="google-tab">Google</button>
+          <button class="tab-button" data-tab="email-tab">Correo / Usuario</button>
+        </div>
+        <div class="tab-panel active" id="google-tab">
+          <div id="g_id_signin_modal"></div>
+        </div>
+        <div class="tab-panel" id="email-tab">
+          <form id="login-form">
+            <div class="form-group">
+              <label for="username">Usuario o correo</label>
+              <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Contraseña</label>
+              <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Entrar</button>
+          </form>
+          <p style="text-align:center;margin-top:10px;">¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     function decodeJwtResponse(token) {
@@ -118,10 +195,12 @@
       sessionStorage.setItem("userCredential", response.credential);
 
       updateUI(responsePayload.name, responsePayload.picture);
+      closeLoginModal();
     }
 
     function updateUI(name, pic) {
-        document.getElementById('g_id_signin').style.display = "none";
+        const authActions = document.getElementById('auth-actions');
+        if (authActions) authActions.style.display = 'none';
         const userProfile = document.getElementById('user-profile');
         if (userProfile) {
             userProfile.style.display = "flex";
@@ -133,13 +212,41 @@
     function signOut() {
         google.accounts.id.disableAutoSelect();
         sessionStorage.clear();
-        document.getElementById('g_id_signin').style.display = "block";
+        const authActions = document.getElementById('auth-actions');
+        if (authActions) authActions.style.display = 'flex';
         const userProfile = document.getElementById('user-profile');
         if (userProfile) {
             userProfile.style.display = "none";
         }
         console.log('User signed out.');
     }
+
+    // Modal logic
+    const modalEl = document.getElementById('login-modal');
+    const openBtn = document.getElementById('open-login-modal');
+    const closeBtn = document.getElementById('close-login-modal');
+
+    function openLoginModal() {
+      modalEl.classList.add('open');
+    }
+    function closeLoginModal() {
+      modalEl.classList.remove('open');
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openLoginModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeLoginModal);
+    modalEl.addEventListener('click', (e) => { if (e.target === modalEl) closeLoginModal(); });
+
+    // Tabs
+    document.querySelectorAll('.tab-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const panel = document.getElementById(btn.dataset.tab);
+        if (panel) panel.classList.add('active');
+      });
+    });
 
     window.onload = function () {
       google.accounts.id.initialize({
@@ -152,12 +259,14 @@
         const payload = decodeJwtResponse(userCredential);
         updateUI(payload.name, payload.picture);
       } else {
-        google.accounts.id.renderButton(
-          document.getElementById("g_id_signin"),
-          { theme: "outline", size: "large", text: "signin_with", shape: "rectangular", logo_alignment: "left" }
-        );
+        // Render Google button in modal, not header
+        const target = document.getElementById("g_id_signin_modal");
+        if (target) {
+          google.accounts.id.renderButton(target, { theme: "outline", size: "large", text: "signin_with", shape: "rectangular", logo_alignment: "left" });
+        }
       }
     };
   </script>
+  <script src="auth.js"></script>
 </body>
 </html>
