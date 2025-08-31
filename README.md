@@ -2,13 +2,13 @@
 
 ## 🌟 Sobre el Proyecto
 
-**Yanapanakunchik** es una plataforma de comercio justo que conecta directamente a los artesanos de Cusco con los compradores, eliminando intermediarios para asegurar un pago justo y un desarrollo sostenible para las comunidades productoras.
+**Yanapanakunchik** es una plataforma de comercio justo que conecta directamente a los emprendedores del Cusco con los compradores, eliminando intermediarios para asegurar un pago justo y un desarrollo sostenible para las comunidades productoras.
 
 ### 🎯 Misión
-Crear un puente directo entre los talentosos artesanos de Cusco y los consumidores globales, preservando las tradiciones culturales mientras promovemos la innovación y el crecimiento económico local.
+Crear un puente directo entre los talentosos emprendedores del Cusco y los consumidores globales, preservando las tradiciones culturales mientras promovemos la innovación y el crecimiento económico local.
 
 ### 🌟 Visión
-Ser la plataforma líder en comercio justo y sostenible en Perú, reconocida por su impacto positivo en las comunidades artesanales y por conectar la riqueza cultural de Cusco con el mundo.
+Ser la plataforma líder en comercio justo y sostenible en Perú, reconocida por su impacto positivo en los emprendedores del Cusco y por conectar la riqueza cultural de Cusco con el mundo.
 
 ## 🏗️ Estructura del Proyecto
 
@@ -16,7 +16,7 @@ Ser la plataforma líder en comercio justo y sostenible en Perú, reconocida por
 - **`index.html`** - Página principal con información sobre la misión y propósito
 - **`sobre-nosotros.html`** - Información detallada sobre el equipo y la historia del proyecto
 - **`tienda.html`** - Tienda en línea con productos artesanales
-- **`blog.html`** - Blog con artículos sobre artesanías y cultura cusqueña
+- **`blog.html`** - Blog con artículos sobre emprendimientos y cultura cusqueña
 - **`contacto.html`** - Página de contacto con información detallada del equipo
 - **`politica-privacidad.html`** - Política de privacidad y protección de datos
 - **`admin.html`** - Panel de administración para gestionar productos
@@ -43,7 +43,7 @@ Ser la plataforma líder en comercio justo y sostenible en Perú, reconocida por
 ## 🚀 Funcionalidades
 
 ### 🛒 Tienda en Línea
-- Catálogo de productos artesanales
+- Catálogo de productos de emprendedores
 - Sistema de carrito de compras
 - Autenticación de usuarios
 - Panel de administración
@@ -54,7 +54,7 @@ Ser la plataforma líder en comercio justo y sostenible en Perú, reconocida por
 - Gestión de perfiles de usuario
 
 ### 📝 Blog
-- Artículos sobre artesanías
+- Artículos sobre emprendimientos
 - Cultura cusqueña
 - Comercio justo
 - Newsletter
@@ -77,7 +77,7 @@ Ser la plataforma líder en comercio justo y sostenible en Perú, reconocida por
 
 ## 📊 Impacto Actual
 
-- ✅ 150+ Artesanos Beneficiados
+- ✅ 150+ Emprendedores Beneficiados
 - ✅ 500+ Productos Únicos
 - ✅ 1000+ Clientes Satisfechos
 - ✅ 15 Comunidades Involucradas
@@ -111,8 +111,8 @@ Ser la plataforma líder en comercio justo y sostenible en Perú, reconocida por
 
 - **Inicio** - Información general y propósito
 - **Sobre Nosotros** - Historia, misión, visión y valores
-- **Tienda** - Catálogo de productos artesanales
-- **Blog** - Artículos sobre cultura y artesanías
+- **Tienda** - Catálogo de productos de emprendedores
+- **Blog** - Artículos sobre cultura y emprendimientos
 - **Contacto** - Información de contacto detallada
 
 ## 🔒 Seguridad y Privacidad
@@ -130,7 +130,7 @@ Ser la plataforma líder en comercio justo y sostenible en Perú, reconocida por
 
 ## 🌱 Valores
 
-- 🤝 **Comercio Justo** - Precios justos para artesanos
+- 🤝 **Comercio Justo** - Precios justos para emprendedores
 - 🌱 **Sostenibilidad** - Prácticas respetuosas con el medio ambiente
 - 🏛️ **Preservación Cultural** - Mantenimiento de técnicas tradicionales
 - 👥 **Comunidad** - Desarrollo de relaciones sólidas
