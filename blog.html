@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#F4F4F4" />
+  <title>Blog - Yanapanakunchik</title>
+  <link rel="stylesheet" href="styles-optimized.css" />
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, var(--accent-color), #2c5aa0);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .blog-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .blog-hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    .blog-content {
+      padding: 4rem 0;
+    }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+    }
+    
+    .blog-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .blog-post {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .blog-post:hover {
+      transform: translateY(-5px);
+    }
+    
+    .blog-post img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    
+    .blog-post-content {
+      padding: 2rem;
+    }
+    
+    .blog-post-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    .blog-post h3 {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .blog-post p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    .read-more {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .read-more:hover {
+      text-decoration: underline;
+    }
+    
+    .blog-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .sidebar-widget {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .sidebar-widget h3 {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.5rem;
+    }
+    
+    .category-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .category-list li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .category-list a {
+      color: #555;
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .category-list a:hover {
+      color: var(--accent-color);
+    }
+    
+    .recent-posts {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .recent-posts li {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .recent-posts li:last-child {
+      border-bottom: none;
+    }
+    
+    .recent-posts a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .recent-posts a:hover {
+      color: var(--accent-color);
+    }
+    
+    .recent-posts .date {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 0.25rem;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .newsletter-form input {
+      padding: 0.8rem;
+      border: 2px solid #e1e5e9;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    
+    .newsletter-form button {
+      background: var(--accent-color);
+      color: white;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    
+    .newsletter-form button:hover {
+      background: #2c5aa0;
+    }
+    
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    
+    .pagination a {
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--accent-color);
+      border-radius: 5px;
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .pagination a:hover,
+    .pagination a.active {
+      background: var(--accent-color);
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .blog-hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <h1><a href="index.html">Yanapanakunchik</a></h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html#objetivo">Nuestro Objetivo</a>
+        <a href="sobre-nosotros.html">Sobre Nosotros</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="blog.html">Blog</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="auth-actions" id="auth-actions">
+        <button class="login-button" id="open-login-modal">Iniciar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="blog-hero">
+    <div class="container">
+      <h1>Blog de Yanapanakunchik</h1>
+      <p>Descubre las historias detrás de nuestras artesanías, la cultura cusqueña y el comercio justo</p>
+    </div>
+  </section>
+
+  <main class="blog-content">
+    <div class="container">
+      <div class="blog-grid">
+        <div class="blog-main">
+          <article class="blog-post">
+            <img src="https://picsum.photos/seed/artesania1/800/400" alt="Artesanías de Cusco">
+            <div class="blog-post-content">
+              <div class="blog-post-meta">
+                <span>📅 15 de Marzo, 2024</span>
+                <span>👤 Por Naomi Cusi</span>
+                <span>🏷️ Artesanías</span>
+              </div>
+              <h3>El Arte de Tejer en Cusco: Tradición y Modernidad</h3>
+              <p>Descubre cómo las técnicas ancestrales de tejido se mantienen vivas en las comunidades de Cusco, combinando la tradición con diseños contemporáneos que atraen a compradores de todo el mundo...</p>
+              <a href="#" class="read-more">Leer más →</a>
+            </div>
+          </article>
+
+          <article class="blog-post">
+            <img src="https://picsum.photos/seed/ceramica/800/400" alt="Cerámica Cusqueña">
+            <div class="blog-post-content">
+              <div class="blog-post-meta">
+                <span>📅 10 de Marzo, 2024</span>
+                <span>👤 Por Abraham Huallpa</span>
+                <span>🏷️ Cerámica</span>
+              </div>
+              <h3>La Cerámica de Cusco: Un Legado de Generaciones</h3>
+              <p>Exploramos las técnicas de cerámica que han sido transmitidas de generación en generación en las comunidades cusqueñas, y cómo Yanapanakunchik está ayudando a preservar estas tradiciones...</p>
+              <a href="#" class="read-more">Leer más →</a>
+            </div>
+          </article>
+
+          <article class="blog-post">
+            <img src="https://picsum.photos/seed/comercio-justo/800/400" alt="Comercio Justo">
+            <div class="blog-post-content">
+              <div class="blog-post-meta">
+                <span>📅 5 de Marzo, 2024</span>
+                <span>👤 Por Daniela Cusihuallpa</span>
+                <span>🏷️ Comercio Justo</span>
+              </div>
+              <h3>¿Qué Significa Realmente el Comercio Justo?</h3>
+              <p>Un análisis profundo sobre los principios del comercio justo y cómo Yanapanakunchik los implementa en su modelo de negocio para beneficiar tanto a los artesanos como a los consumidores...</p>
+              <a href="#" class="read-more">Leer más →</a>
+            </div>
+          </article>
+
+          <article class="blog-post">
+            <img src="https://picsum.photos/seed/alpaca/800/400" alt="Lana de Alpaca">
+            <div class="blog-post-content">
+              <div class="blog-post-meta">
+                <span>📅 28 de Febrero, 2024</span>
+                <span>👤 Por Solange Cueva</span>
+                <span>🏷️ Sostenibilidad</span>
+              </div>
+              <h3>La Lana de Alpaca: Un Tesoro Sostenible de los Andes</h3>
+              <p>Conoce el proceso sostenible de producción de lana de alpaca, desde el cuidado de los animales hasta la creación de prendas únicas que respetan el medio ambiente...</p>
+              <a href="#" class="read-more">Leer más →</a>
+            </div>
+          </article>
+
+          <div class="pagination">
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">→</a>
+          </div>
+        </div>
+
+        <aside class="blog-sidebar">
+          <div class="sidebar-widget">
+            <h3>📂 Categorías</h3>
+            <ul class="category-list">
+              <li><a href="#">Artesanías <span>(15)</span></a></li>
+              <li><a href="#">Comercio Justo <span>(8)</span></a></li>
+              <li><a href="#">Cultura Cusqueña <span>(12)</span></a></li>
+              <li><a href="#">Sostenibilidad <span>(6)</span></a></li>
+              <li><a href="#">Historias de Artesanos <span>(10)</span></a></li>
+              <li><a href="#">Técnicas Tradicionales <span>(7)</span></a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-widget">
+            <h3>📰 Artículos Recientes</h3>
+            <ul class="recent-posts">
+              <li>
+                <a href="#">El Impacto del Comercio Justo en las Comunidades Andinas</a>
+                <div class="date">20 de Marzo, 2024</div>
+              </li>
+              <li>
+                <a href="#">Técnicas de Teñido Natural en los Andes</a>
+                <div class="date">18 de Marzo, 2024</div>
+              </li>
+              <li>
+                <a href="#">Historias de Éxito: María y su Familia</a>
+                <div class="date">15 de Marzo, 2024</div>
+              </li>
+              <li>
+                <a href="#">La Importancia de Preservar las Tradiciones</a>
+                <div class="date">12 de Marzo, 2024</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="sidebar-widget">
+            <h3>📧 Suscríbete a Nuestro Newsletter</h3>
+            <p>Recibe las últimas noticias sobre artesanías, cultura cusqueña y comercio justo.</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Tu email" required>
+              <button type="submit">Suscribirse</button>
+            </form>
+          </div>
+
+          <div class="sidebar-widget">
+            <h3>🏷️ Etiquetas Populares</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <a href="#" style="background: #f0f0f0; padding: 0.3rem 0.8rem; border-radius: 20px; text-decoration: none; color: #333; font-size: 0.9rem;">Artesanías</a>
+              <a href="#" style="background: #f0f0f0; padding: 0.3rem 0.8rem; border-radius: 20px; text-decoration: none; color: #333; font-size: 0.9rem;">Cusco</a>
+              <a href="#" style="background: #f0f0f0; padding: 0.3rem 0.8rem; border-radius: 20px; text-decoration: none; color: #333; font-size: 0.9rem;">Comercio Justo</a>
+              <a href="#" style="background: #f0f0f0; padding: 0.3rem 0.8rem; border-radius: 20px; text-decoration: none; color: #333; font-size: 0.9rem;">Sostenibilidad</a>
+              <a href="#" style="background: #f0f0f0; padding: 0.3rem 0.8rem; border-radius: 20px; text-decoration: none; color: #333; font-size: 0.9rem;">Tradición</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div style="text-align: center;">
+        <p>&copy; 2024 Yanapanakunchik. Todos los derechos reservados.</p>
+        <p>Comercio Justo y Sostenible en Cusco, Perú</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script de protección y marca de agua -->
+  <script src="protection.js"></script>
+
+  <script>
+    // Manejo del formulario de newsletter
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      alert('¡Gracias por suscribirte! Te mantendremos informado sobre las últimas noticias.');
+      this.reset();
+    });
+  </script>
+</body>
+</html> 

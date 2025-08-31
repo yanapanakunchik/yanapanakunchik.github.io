@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#F4F4F4" />
+  <title>Sobre Nosotros - Yanapanakunchik</title>
+  <link rel="stylesheet" href="styles-optimized.css" />
+  <style>
+    .about-hero {
+      background: linear-gradient(135deg, var(--accent-color), #2c5aa0);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .about-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .about-hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .about-content {
+      padding: 4rem 0;
+    }
+    
+    .mission-vision {
+      background: #f8f9fa;
+      padding: 4rem 0;
+    }
+    
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+    
+    .mission-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .mission-card h3 {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .mission-card p {
+      line-height: 1.6;
+      color: #555;
+    }
+    
+    .values-section {
+      padding: 4rem 0;
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .value-card {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      border-left: 4px solid var(--accent-color);
+    }
+    
+    .value-card h4 {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+    
+    .value-card p {
+      color: #555;
+      line-height: 1.6;
+    }
+    
+    .history-section {
+      background: #f8f9fa;
+      padding: 4rem 0;
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 3rem auto 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--accent-color);
+      transform: translateX(-50%);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: 0;
+      margin-right: 50%;
+      padding-right: 2rem;
+      text-align: right;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: 50%;
+      margin-right: 0;
+      padding-left: 2rem;
+      text-align: left;
+    }
+    
+    .timeline-content {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .timeline-content h4 {
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-content .date {
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 1rem;
+      width: 12px;
+      height: 12px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+    
+    .impact-section {
+      padding: 4rem 0;
+    }
+    
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .impact-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-top: 4px solid var(--accent-color);
+    }
+    
+    .impact-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .impact-label {
+      font-size: 1.1rem;
+      color: #333;
+      font-weight: 600;
+    }
+    
+    .cta-section {
+      background: linear-gradient(135deg, var(--accent-color), #2c5aa0);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .cta-section h2 {
+      margin-bottom: 1rem;
+    }
+    
+    .cta-section p {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .cta-button {
+      background: white;
+      color: var(--accent-color);
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      background: #f8f9fa;
+      transform: translateY(-2px);
+    }
+    
+    .cta-button.secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    
+    .cta-button.secondary:hover {
+      background: white;
+      color: var(--accent-color);
+    }
+    
+    @media (max-width: 768px) {
+      .mission-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .about-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .timeline::before {
+        left: 20px;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 50px;
+        margin-right: 0;
+        padding-left: 1rem;
+        padding-right: 0;
+        text-align: left;
+      }
+      
+      .timeline-item::before {
+        left: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <h1><a href="index.html">Yanapanakunchik</a></h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html#objetivo">Nuestro Objetivo</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="auth-actions" id="auth-actions">
+        <button class="login-button" id="open-login-modal">Iniciar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="about-hero">
+    <div class="container">
+      <h1>Sobre Yanapanakunchik</h1>
+      <p>Somos una organización comprometida con el desarrollo sostenible y el comercio justo, trabajando para empoderar a las comunidades artesanales de Cusco y conectar sus productos con el mundo.</p>
+    </div>
+  </section>
+
+  <main class="about-content">
+    <div class="container">
+      <section class="mission-vision">
+        <h2>Nuestra Misión y Visión</h2>
+        <div class="mission-grid">
+          <div class="mission-card">
+            <h3>🎯 Nuestra Misión</h3>
+            <p>Crear un puente directo entre los talentosos artesanos de Cusco y los consumidores globales, eliminando intermediarios para asegurar un pago justo y un desarrollo sostenible para las comunidades productoras. Buscamos preservar las tradiciones culturales mientras promovemos la innovación y el crecimiento económico local.</p>
+          </div>
+          <div class="mission-card">
+            <h3>🌟 Nuestra Visión</h3>
+            <p>Ser la plataforma líder en comercio justo y sostenible en Perú, reconocida por su impacto positivo en las comunidades artesanales y por conectar la riqueza cultural de Cusco con el mundo. Aspiramos a crear un modelo replicable que pueda beneficiar a otras regiones del país.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="values-section">
+        <h2>Nuestros Valores</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <h4>🤝 Comercio Justo</h4>
+            <p>Garantizamos precios justos para los artesanos, eliminando intermediarios y asegurando que reciban el valor completo de su trabajo.</p>
+          </div>
+          <div class="value-card">
+            <h4>🌱 Sostenibilidad</h4>
+            <p>Promovemos prácticas sostenibles tanto en la producción como en el comercio, respetando el medio ambiente y las tradiciones locales.</p>
+          </div>
+          <div class="value-card">
+            <h4>🏛️ Preservación Cultural</h4>
+            <p>Valoramos y preservamos las técnicas artesanales tradicionales, transmitiendo el conocimiento de generación en generación.</p>
+          </div>
+          <div class="value-card">
+            <h4>👥 Comunidad</h4>
+            <p>Construimos relaciones sólidas con las comunidades artesanales, trabajando juntos para su desarrollo y empoderamiento.</p>
+          </div>
+          <div class="value-card">
+            <h4>🔍 Transparencia</h4>
+            <p>Mantenemos transparencia total en nuestros procesos, desde la producción hasta la venta final.</p>
+          </div>
+          <div class="value-card">
+            <h4>💡 Innovación</h4>
+            <p>Buscamos constantemente nuevas formas de mejorar y expandir el impacto de nuestro trabajo en las comunidades.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="history-section">
+        <h2>Nuestra Historia</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="date">2020</div>
+              <h4>El Inicio</h4>
+              <p>Un grupo de estudiantes universitarios de Cusco identificó la necesidad de crear una plataforma que conectara directamente a los artesanos con los consumidores.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="date">2021</div>
+              <h4>Primeros Pasos</h4>
+              <p>Se establecieron las primeras alianzas con comunidades artesanales locales y se desarrolló el concepto inicial de la plataforma.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="date">2022</div>
+              <h4>Lanzamiento</h4>
+              <p>Yanapanakunchik se lanzó oficialmente, comenzando con 15 artesanos y 50 productos únicos de la región de Cusco.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="date">2023</div>
+              <h4>Crecimiento</h4>
+              <p>La plataforma expandió su alcance a más de 100 artesanos y 300 productos, llegando a clientes en todo Perú y el extranjero.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="date">2024</div>
+              <h4>Innovación</h4>
+              <p>Implementamos nuevas tecnologías y expandimos nuestros servicios para incluir capacitación y desarrollo de capacidades para los artesanos.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="impact-section">
+        <h2>Nuestro Impacto</h2>
+        <div class="impact-grid">
+          <div class="impact-card">
+            <div class="impact-number">150+</div>
+            <div class="impact-label">Artesanos Beneficiados</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-number">500+</div>
+            <div class="impact-label">Productos Únicos</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-number">1000+</div>
+            <div class="impact-label">Clientes Satisfechos</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-number">15</div>
+            <div class="impact-label">Comunidades Involucradas</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-number">40%</div>
+            <div class="impact-label">Incremento en Ingresos</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-number">100%</div>
+            <div class="impact-label">Comercio Justo</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Únete a Nuestra Misión</h2>
+      <p>Ayúdanos a seguir empoderando a las comunidades artesanales de Cusco y preservando sus tradiciones culturales.</p>
+      <div class="cta-buttons">
+        <a href="tienda.html" class="cta-button">Explorar Productos</a>
+        <a href="contacto.html" class="cta-button secondary">Contáctanos</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div style="text-align: center;">
+        <p>&copy; 2024 Yanapanakunchik. Todos los derechos reservados.</p>
+        <p>Comercio Justo y Sostenible en Cusco, Perú</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Script de protección y marca de agua -->
+  <script src="protection.js"></script>
+</body>
+</html> 

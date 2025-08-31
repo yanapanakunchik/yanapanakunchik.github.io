@@ -1,0 +1,353 @@
+/* Variables CSS optimizadas */
+:root {
+  --accent-color: #3b82f6;
+  --text-color: #333;
+  --bg-color: #fff;
+  --border-color: #e5e7eb;
+  --shadow: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-lg: 0 4px 6px rgba(0,0,0,0.1);
+  --radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header optimizado */
+.site-header {
+  background: var(--bg-color);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navegación optimizada */
+.main-nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 0.5rem;
+  border-radius: var(--radius);
+}
+
+.main-nav a:hover {
+  color: var(--accent-color);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* Botones optimizados */
+.login-button, .cta-button {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--transition);
+}
+
+.login-button:hover, .cta-button:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+/* Secciones principales */
+.page-section {
+  padding: 3rem 0;
+}
+
+.page-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--accent-color);
+  font-size: 2rem;
+}
+
+/* Hero section optimizado */
+#hero {
+  background: linear-gradient(135deg, var(--accent-color), #1d4ed8);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.hero-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+/* Grids optimizados */
+.objetivo-content, .personas-ayudadas, .integrantes-container {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.objetivo-content {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.personas-ayudadas {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.integrantes-container {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Cards optimizadas */
+.persona, .integrante {
+  background: var(--bg-color);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.persona:hover, .integrante:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.persona img, .integrante img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid var(--accent-color);
+}
+
+/* Footer optimizado */
+.site-footer {
+  background: #f8fafc;
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.site-footer h2 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.site-footer p {
+  margin-bottom: 0.5rem;
+}
+
+.site-footer a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+/* Marca de agua de copyright */
+.copyright-watermark {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  z-index: 1000;
+  pointer-events: none;
+  user-select: none;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal optimizado */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: var(--bg-color);
+  padding: 2rem;
+  border-radius: var(--radius);
+  max-width: 400px;
+  width: 90%;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.9);
+  transition: var(--transition);
+}
+
+.modal-overlay.show .modal {
+  transform: scale(1);
+}
+
+/* Formularios optimizados */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+/* Responsive optimizado */
+@media (max-width: 768px) {
+  .site-header .container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .main-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .objetivo-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+  
+  .page-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .copyright-watermark {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* Optimizaciones adicionales */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Lazy loading para imágenes */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Prevención de selección de texto */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Protección contra copia */
+.protect-content {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Animaciones optimizadas */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: var(--transition);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+} 

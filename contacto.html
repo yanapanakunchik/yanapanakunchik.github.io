@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#F4F4F4" />
+  <title>Contacto - Yanapanakunchik</title>
+  <link rel="stylesheet" href="styles-optimized.css" />
+  <style>
+    .contact-hero {
+      background: linear-gradient(135deg, var(--accent-color), #2c5aa0);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .contact-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    .contact-content {
+      padding: 4rem 0;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+    
+    .contact-info {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 10px;
+      border-left: 4px solid var(--accent-color);
+    }
+    
+    .contact-info h3 {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+    
+    .contact-info p {
+      margin-bottom: 0.5rem;
+    }
+    
+    .contact-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #e1e5e9;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent-color);
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .submit-btn {
+      background: var(--accent-color);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .submit-btn:hover {
+      background: #2c5aa0;
+    }
+    
+    .team-section {
+      background: #f8f9fa;
+      padding: 4rem 0;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .team-member {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+    
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid var(--accent-color);
+    }
+    
+    .team-member h4 {
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .team-member .role {
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    
+    .team-member .bio {
+      color: #555;
+      line-height: 1.6;
+    }
+    
+    .social-links {
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .map-section {
+      padding: 4rem 0;
+      background: white;
+    }
+    
+    .map-container {
+      height: 400px;
+      background: #e1e5e9;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    
+    .map-placeholder {
+      text-align: center;
+      color: #666;
+    }
+    
+    .map-placeholder h3 {
+      margin-bottom: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .contact-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <h1><a href="index.html">Yanapanakunchik</a></h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html#objetivo">Nuestro Objetivo</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="auth-actions" id="auth-actions">
+        <button class="login-button" id="open-login-modal">Iniciar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="contact-hero">
+    <div class="container">
+      <h1>Comunícate con Nosotros</h1>
+      <p>Estamos aquí para ayudarte y responder todas tus preguntas sobre nuestro proyecto de comercio justo</p>
+    </div>
+  </section>
+
+  <main class="contact-content">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Información de Contacto</h3>
+          <p><strong>📧 Email:</strong> <a href="mailto:info@yanapanakunchik.com">info@yanapanakunchik.com</a></p>
+          <p><strong>📞 Teléfono:</strong> +51 987 654 321</p>
+          <p><strong>📱 WhatsApp:</strong> +51 987 654 321</p>
+          <p><strong>📍 Dirección:</strong> Plaza de Armas, Cusco, Perú</p>
+          <p><strong>🕒 Horario:</strong> Lunes a Viernes 9:00 AM - 6:00 PM</p>
+          
+          <h3 style="margin-top: 2rem;">Redes Sociales</h3>
+          <p><strong>📘 Facebook:</strong> Yanapanakunchik Cusco</p>
+          <p><strong>📷 Instagram:</strong> @yanapanakunchik</p>
+          <p><strong>🐦 Twitter:</strong> @yanapanakunchik</p>
+        </div>
+        
+        <div class="contact-form">
+          <h3>Envíanos un Mensaje</h3>
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Nombre Completo *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Asunto *</label>
+              <select id="subject" name="subject" required>
+                <option value="">Selecciona un asunto</option>
+                <option value="consulta-producto">Consulta sobre Productos</option>
+                <option value="colaboracion">Colaboración</option>
+                <option value="soporte">Soporte Técnico</option>
+                <option value="sugerencia">Sugerencia</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Mensaje *</label>
+              <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Enviar Mensaje</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="team-section">
+    <div class="container">
+      <h2>Conoce Nuestro Equipo</h2>
+      <p>Somos un equipo comprometido con el desarrollo sostenible y el comercio justo en Cusco</p>
+      
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="photos/Naomi Adriana Cusi Sullca.jpg" alt="Naomi Adriana Cusi Sullca">
+          <h4>Naomi Adriana Cusi Sullca</h4>
+          <div class="role">Gerente General</div>
+          <div class="bio">
+            Líder visionaria con más de 8 años de experiencia en gestión de proyectos sociales. 
+            Especializada en desarrollo comunitario y comercio justo. Su pasión es empoderar a 
+            las comunidades artesanales de Cusco.
+          </div>
+          <div class="social-links">
+            <a href="mailto:naomi@yanapanakunchik.com">📧</a>
+            <a href="https://linkedin.com/in/naomi-cusi">💼</a>
+          </div>
+        </div>
+        
+        <div class="team-member">
+          <img src="photos/Yhon Franco Gomez Colquer.jpg" alt="Yhon Franco Gomez Colquer">
+          <h4>Yhon Franco Gomez Colquer</h4>
+          <div class="role">Gerente de Recursos Humanos</div>
+          <div class="bio">
+            Experto en gestión de talento humano y desarrollo organizacional. 
+            Se enfoca en crear un ambiente laboral inclusivo y en el desarrollo 
+            profesional de nuestro equipo y artesanos asociados.
+          </div>
+          <div class="social-links">
+            <a href="mailto:yhon@yanapanakunchik.com">📧</a>
+            <a href="https://linkedin.com/in/yhon-gomez">💼</a>
+          </div>
+        </div>
+        
+        <div class="team-member">
+          <img src="photos/Daniela Sami Cusihuallpa Cusicuna.jpg" alt="Daniela Sami Cusihuallpa Cusicuna">
+          <h4>Daniela Sami Cusihuallpa Cusicuna</h4>
+          <div class="role">Gerente de Marketing</div>
+          <div class="bio">
+            Estratega de marketing digital con experiencia en branding y comunicación. 
+            Su objetivo es dar visibilidad a las historias y productos de nuestros 
+            artesanos en el mercado global.
+          </div>
+          <div class="social-links">
+            <a href="mailto:daniela@yanapanakunchik.com">📧</a>
+            <a href="https://linkedin.com/in/daniela-cusihuallpa">💼</a>
+          </div>
+        </div>
+        
+        <div class="team-member">
+          <img src="photos/Abraham Huallpa Sullo.jpg" alt="Abraham Huallpa Sullo">
+          <h4>Abraham Huallpa Sullo</h4>
+          <div class="role">Gerente de T.I.</div>
+          <div class="bio">
+            Desarrollador full-stack con experiencia en e-commerce y plataformas digitales. 
+            Responsable de mantener nuestra plataforma tecnológica funcionando 
+            de manera eficiente y segura.
+          </div>
+          <div class="social-links">
+            <a href="mailto:abraham@yanapanakunchik.com">📧</a>
+            <a href="https://linkedin.com/in/abraham-huallpa">💼</a>
+          </div>
+        </div>
+        
+        <div class="team-member">
+          <img src="photos/Solange Yadira Cueva Chacmani.jpg" alt="Solange Yadira Cueva Chacmani">
+          <h4>Solange Yadira Cueva Chacmani</h4>
+          <div class="role">Gerente de Finanzas</div>
+          <div class="bio">
+            Contadora pública con especialización en finanzas sostenibles. 
+            Gestiona la transparencia financiera y asegura que los recursos 
+            se distribuyan de manera justa entre todos los participantes.
+          </div>
+          <div class="social-links">
+            <a href="mailto:solange@yanapanakunchik.com">📧</a>
+            <a href="https://linkedin.com/in/solange-cueva">💼</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <div class="container">
+      <h2>Nuestra Ubicación</h2>
+      <p>Visítanos en el corazón de Cusco, donde la tradición se encuentra con la innovación</p>
+      
+      <div class="map-container">
+        <div class="map-placeholder">
+          <h3>📍 Plaza de Armas, Cusco</h3>
+          <p>Estamos ubicados en el centro histórico de Cusco, cerca de la Plaza de Armas.</p>
+          <p>Coordenadas: -13.5167° S, -71.9789° W</p>
+          <p><strong>Horario de atención:</strong> Lunes a Viernes 9:00 AM - 6:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div style="text-align: center;">
+        <p>&copy; 2024 Yanapanakunchik. Todos los derechos reservados.</p>
+        <p>Comercio Justo y Sostenible en Cusco, Perú</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script de protección y marca de agua -->
+  <script src="protection.js"></script>
+
+  <script>
+    // Manejo del formulario de contacto
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Obtener los valores del formulario
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+      
+      // Simular envío del formulario
+      alert('¡Gracias por tu mensaje! Te responderemos pronto.');
+      this.reset();
+    });
+  </script>
+</body>
+</html> 

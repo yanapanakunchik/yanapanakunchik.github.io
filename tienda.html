@@ -6,8 +6,58 @@
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#F4F4F4" />
   <title>Tienda - Yanapanakunchik</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-optimized.css" />
   <link rel="stylesheet" href="tienda.css" />
+  <style>
+    /* Cookie Consent Banner */
+    .cookie-consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(25, 25, 25, 0.9);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      padding: 1.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.25rem;
+      z-index: 3000;
+      transform: translateY(100%);
+      transition: transform 0.5s ease-in-out;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .cookie-consent-banner.show {
+      transform: translateY(0);
+    }
+    .cookie-consent-banner p {
+      margin: 0;
+      font-size: 0.95em;
+      flex-grow: 1;
+    }
+    .cookie-consent-banner .buttons {
+      display: flex;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+    .cookie-consent-banner button {
+      width: auto;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cookie-consent-banner .accept-btn {
+      background: var(--accent-color);
+      color: white;
+    }
+    .cookie-consent-banner .reject-btn {
+      background: #444;
+      color: white;
+    }
+  </style>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
@@ -18,8 +68,10 @@
       </div>
       <nav>
         <a href="index.html#objetivo">Nuestro Objetivo</a>
+        <a href="sobre-nosotros.html">Sobre Nosotros</a>
         <a href="tienda.html">Tienda</a>
-        <a href="index.html#contacto">Comunícate con Nosotros</a>
+        <a href="blog.html">Blog</a>
+        <a href="contacto.html">Comunícate con Nosotros</a>
       </nav>
       <div class="cart-icon">
         <a href="#" id="cart-link" class="cart-button">
@@ -35,40 +87,204 @@
           <div id="user-profile" style="display: none;">
               <img id="user-pic" src="" alt="User Picture">
               <span id="user-name"></span>
-              <button id="logout-button" onclick="signOut();">Cerrar Sesión</button>
+              <button id="user-menu-toggle" class="user-menu-toggle">▼</button>
+              <div id="user-menu" class="user-menu">
+                <a href="#" id="profile-tab-link" class="user-menu-item">Mi Perfil</a>
+                <a href="#" id="send-product-link" class="user-menu-item">Enviar Producto</a>
+                <button id="logout-button" class="user-menu-item logout-btn" onclick="signOut();">Cerrar Sesión</button>
+              </div>
           </div>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="page-title">
+    <!-- Tabs Navigation -->
+    <div class="tabs-navigation" id="tabs-navigation" style="display: none;">
       <div class="container">
-        <h1>Nuestra Tienda</h1>
-        <p>Descubre productos únicos y auténticos de los artesanos de Cusco</p>
+        <button class="tab-nav-btn active" data-tab="tienda-tab">Tienda</button>
+        <button class="tab-nav-btn" data-tab="profile-tab">Mi Perfil</button>
+        <button class="tab-nav-btn" data-tab="send-product-tab">Enviar Producto</button>
       </div>
-    </section>
+    </div>
 
-    <section id="tienda-productos">
-      <div class="container">
-        <div class="productos-grid" id="productos-grid">
-          <!-- Los productos se cargarán aquí dinámicamente -->
+    <!-- Tienda Tab -->
+    <div class="tab-content active" id="tienda-tab">
+      <section class="page-title">
+        <div class="container">
+          <h1>Nuestra Tienda</h1>
+          <p>Descubre productos únicos y auténticos de los artesanos de Cusco</p>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="carrito-compras" style="display: none;">
-      <div class="container">
-        <h2>Carrito de Compras</h2>
-        <div id="cart-items" class="cart-items">
-          <!-- Los productos del carrito se mostrarán aquí -->
+      <section id="tienda-productos">
+        <div class="container">
+          <div class="productos-grid" id="productos-grid">
+            <!-- Los productos se cargarán aquí dinámicamente -->
+          </div>
         </div>
-        <div class="cart-summary">
-          <p class="cart-total">Total: S/ <span id="cart-total">0.00</span></p>
-          <button id="checkout-btn" class="checkout-button">Proceder al Pago</button>
+      </section>
+
+      <section id="carrito-compras" style="display: none;">
+        <div class="container">
+          <h2>Carrito de Compras</h2>
+          <div id="cart-items" class="cart-items">
+            <!-- Los productos del carrito se mostrarán aquí -->
+          </div>
+          <div class="cart-summary">
+            <p class="cart-total">Total: S/ <span id="cart-total">0.00</span></p>
+            <button id="checkout-btn" class="checkout-button">Proceder al Pago</button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
+
+    <!-- Profile Tab -->
+    <div class="tab-content" id="profile-tab">
+      <section class="page-title">
+        <div class="container">
+          <h1>Mi Perfil</h1>
+          <p>Gestiona tu información personal y preferencias</p>
+        </div>
+      </section>
+
+      <section class="profile-section">
+        <div class="container">
+          <div class="profile-card">
+            <div class="profile-header">
+              <img id="profile-pic" src="" alt="Foto de perfil" class="profile-picture">
+              <div class="profile-info">
+                <h2 id="profile-name">Nombre del Usuario</h2>
+                <p id="profile-email">usuario@email.com</p>
+                <span class="member-since">Miembro desde: <span id="member-date">2024</span></span>
+              </div>
+            </div>
+            
+            <div class="profile-stats">
+              <div class="stat-item">
+                <span class="stat-number" id="orders-count">0</span>
+                <span class="stat-label">Pedidos Realizados</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" id="favorites-count">0</span>
+                <span class="stat-label">Productos Favoritos</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" id="reviews-count">0</span>
+                <span class="stat-label">Reseñas Escritas</span>
+              </div>
+            </div>
+
+            <div class="profile-actions">
+              <button class="profile-btn primary">Editar Perfil</button>
+              <button class="profile-btn secondary">Cambiar Contraseña</button>
+              <button class="profile-btn secondary">Preferencias</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Send Product Tab -->
+    <div class="tab-content" id="send-product-tab">
+      <section class="page-title">
+        <div class="container">
+          <h1>Enviar Producto</h1>
+          <p>¿Tienes un producto artesanal que quieres vender? ¡Envíanoslo!</p>
+        </div>
+      </section>
+
+      <section class="send-product-section">
+        <div class="container">
+          <div class="send-product-card">
+            <div class="form-header">
+              <h2>Formulario de Producto</h2>
+              <p>Completa la información de tu producto artesanal para que podamos evaluarlo</p>
+            </div>
+
+            <form id="send-product-form" class="send-product-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="product-name">Nombre del Producto *</label>
+                  <input type="text" id="product-name" name="product-name" required>
+                </div>
+                <div class="form-group">
+                  <label for="product-category">Categoría *</label>
+                  <select id="product-category" name="product-category" required>
+                    <option value="">Selecciona una categoría</option>
+                    <option value="textiles">Textiles</option>
+                    <option value="ceramica">Cerámica</option>
+                    <option value="joyeria">Joyería</option>
+                    <option value="madera">Trabajos en Madera</option>
+                    <option value="cuero">Trabajos en Cuero</option>
+                    <option value="metal">Trabajos en Metal</option>
+                    <option value="otros">Otros</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="product-price">Precio Sugerido (S/) *</label>
+                  <input type="number" id="product-price" name="product-price" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                  <label for="product-quantity">Cantidad Disponible *</label>
+                  <input type="number" id="product-quantity" name="product-quantity" min="1" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="product-description">Descripción del Producto *</label>
+                <textarea id="product-description" name="product-description" rows="4" required 
+                          placeholder="Describe tu producto, materiales utilizados, técnicas empleadas, historia cultural, etc."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="product-images">Imágenes del Producto</label>
+                <div class="file-upload-area">
+                  <input type="file" id="product-images" name="product-images" multiple accept="image/*">
+                  <div class="file-upload-text">
+                    <span class="upload-icon">📷</span>
+                    <p>Arrastra las imágenes aquí o haz clic para seleccionar</p>
+                    <small>Máximo 5 imágenes, formato JPG, PNG o WebP</small>
+                  </div>
+                </div>
+                <div id="image-preview" class="image-preview"></div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="artisan-name">Nombre del Artesano *</label>
+                  <input type="text" id="artisan-name" name="artisan-name" required>
+                </div>
+                <div class="form-group">
+                  <label for="artisan-phone">Teléfono de Contacto</label>
+                  <input type="tel" id="artisan-phone" name="artisan-phone">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="artisan-story">Historia del Artesano</label>
+                <textarea id="artisan-story" name="artisan-story" rows="3" 
+                          placeholder="Cuéntanos sobre el artesano, su experiencia, tradición familiar, etc."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="additional-info">Información Adicional</label>
+                <textarea id="additional-info" name="additional-info" rows="3" 
+                          placeholder="Cualquier información adicional que consideres relevante"></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="submit-btn">Enviar Producto</button>
+                <button type="reset" class="reset-btn">Limpiar Formulario</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer id="contacto" class="site-footer">
@@ -105,6 +321,12 @@
               <label for="password">Contraseña</label>
               <input type="password" id="password" name="password" required>
             </div>
+            <div class="form-group" style="display: flex; align-items: center; justify-content: space-between;">
+              <label for="remember-me-tienda" style="display: flex; align-items: center; margin-bottom: 0; cursor: pointer;">
+                <input type="checkbox" id="remember-me-tienda" name="remember-me-tienda" style="margin-right: 8px;">
+                Recordarme
+              </label>
+            </div>
             <button type="submit">Entrar</button>
           </form>
           <p style="text-align:center;margin-top:10px;">¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
@@ -130,12 +352,13 @@
       sessionStorage.setItem("userName", responsePayload.name);
       sessionStorage.setItem("userPic", responsePayload.picture);
       sessionStorage.setItem("userCredential", response.credential);
+      sessionStorage.setItem("userEmail", responsePayload.email);
 
-      updateUI(responsePayload.name, responsePayload.picture);
+      updateUI(responsePayload.name, responsePayload.picture, responsePayload.email);
       closeLoginModal();
     }
 
-    function updateUI(name, pic) {
+    function updateUI(name, pic, email) {
         document.getElementById('g_id_signin').style.display = "none";
         const authActions = document.getElementById('auth-actions');
         if (authActions) authActions.style.display = 'none';
@@ -145,11 +368,23 @@
             document.getElementById('user-pic').src = pic;
             document.getElementById('user-name').innerText = name;
         }
+        
+        // Show tabs navigation for logged in users
+        const tabsNavigation = document.getElementById('tabs-navigation');
+        if (tabsNavigation) tabsNavigation.style.display = 'block';
+        
+        // Update profile tab with user info
+        if (email) {
+            document.getElementById('profile-pic').src = pic;
+            document.getElementById('profile-name').innerText = name;
+            document.getElementById('profile-email').innerText = email;
+        }
     }
 
     function signOut() {
         google.accounts.id.disableAutoSelect();
         sessionStorage.clear();
+        localStorage.removeItem('user'); // Borrar usuario recordado
         const authActions = document.getElementById('auth-actions');
         if (authActions) authActions.style.display = 'flex';
         document.getElementById('g_id_signin').style.display = "block";
@@ -157,6 +392,14 @@
         if (userProfile) {
             userProfile.style.display = "none";
         }
+        
+        // Hide tabs navigation for logged out users
+        const tabsNavigation = document.getElementById('tabs-navigation');
+        if (tabsNavigation) tabsNavigation.style.display = 'none';
+        
+        // Reset to tienda tab
+        showTab('tienda-tab');
+        
         console.log('User signed out.');
     }
 
@@ -189,6 +432,31 @@
         });
     }
 
+    // Tab navigation functions
+    function showTab(tabId) {
+      // Hide all tab contents
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      // Remove active class from all tab buttons
+      document.querySelectorAll('.tab-nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Show selected tab content
+      const selectedTab = document.getElementById(tabId);
+      if (selectedTab) {
+        selectedTab.classList.add('active');
+      }
+      
+      // Add active class to selected tab button
+      const selectedBtn = document.querySelector(`[data-tab="${tabId}"]`);
+      if (selectedBtn) {
+        selectedBtn.classList.add('active');
+      }
+    }
+
     // Modal logic
     const modalEl = document.getElementById('login-modal');
     const openBtn = document.getElementById('open-login-modal');
@@ -218,10 +486,16 @@
         callback: handleCredentialResponse
       });
       
+      // Check for persisted sessions (Google or local)
       const userCredential = sessionStorage.getItem("userCredential");
+      const localUserJson = localStorage.getItem('user') || sessionStorage.getItem('user');
+
       if (userCredential) {
         const payload = decodeJwtResponse(userCredential);
-        updateUI(payload.name, payload.picture);
+        updateUI(payload.name, payload.picture, payload.email);
+      } else if (localUserJson) {
+        const userData = JSON.parse(localUserJson);
+        updateUI(userData.username, `https://ui-avatars.com/api/?name=${encodeURIComponent(userData.username)}&background=008080&color=fff`, userData.email || '');
       } else {
         google.accounts.id.renderButton(
           document.getElementById("g_id_signin_modal"),
@@ -266,6 +540,56 @@
         updateCartUI();
         document.getElementById('carrito-compras').style.display = 'none';
       });
+
+      // Tab navigation event listeners
+      document.querySelectorAll('.tab-nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          showTab(btn.dataset.tab);
+        });
+      });
+
+      // User menu toggle
+      const userMenuToggle = document.getElementById('user-menu-toggle');
+      const userMenu = document.getElementById('user-menu');
+      
+      if (userMenuToggle && userMenu) {
+        userMenuToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          userMenu.classList.toggle('show');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', () => {
+          userMenu.classList.remove('show');
+        });
+      }
+
+      // User menu item clicks
+      document.getElementById('profile-tab-link')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        showTab('profile-tab');
+        userMenu.classList.remove('show');
+      });
+
+      document.getElementById('send-product-link')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        showTab('send-product-tab');
+        userMenu.classList.remove('show');
+      });
+
+      // Send product form handling
+      const sendProductForm = document.getElementById('send-product-form');
+      if (sendProductForm) {
+        sendProductForm.addEventListener('submit', handleSendProduct);
+      }
+
+      // File upload preview
+      const fileInput = document.getElementById('product-images');
+      const imagePreview = document.getElementById('image-preview');
+      
+      if (fileInput && imagePreview) {
+        fileInput.addEventListener('change', handleImagePreview);
+      }
 
       loadCartFromStorage();
     };
@@ -446,6 +770,120 @@
       }, 2000);
     }
 
+    // Send product form handling
+    function handleSendProduct(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const productData = {
+        name: formData.get('product-name'),
+        category: formData.get('product-category'),
+        price: parseFloat(formData.get('product-price')),
+        quantity: parseInt(formData.get('product-quantity')),
+        description: formData.get('product-description'),
+        artisanName: formData.get('artisan-name'),
+        artisanPhone: formData.get('artisan-phone'),
+        artisanStory: formData.get('artisan-story'),
+        additionalInfo: formData.get('additional-info'),
+        submittedBy: sessionStorage.getItem('userName') || 'Usuario',
+        submittedEmail: sessionStorage.getItem('userEmail') || 'usuario@email.com',
+        submittedDate: new Date().toISOString()
+      };
+
+      // Send email with product information
+      sendProductEmail(productData);
+      
+      // Show success message
+      showSendProductSuccess();
+      
+      // Reset form
+      e.target.reset();
+      document.getElementById('image-preview').innerHTML = '';
+    }
+
+    function sendProductEmail(productData) {
+      const emailBody = `
+Nuevo producto enviado a Yanapanakunchik
+
+INFORMACIÓN DEL PRODUCTO:
+- Nombre: ${productData.name}
+- Categoría: ${productData.category}
+- Precio sugerido: S/ ${productData.price}
+- Cantidad disponible: ${productData.quantity}
+- Descripción: ${productData.description}
+
+INFORMACIÓN DEL ARTESANO:
+- Nombre: ${productData.artisanName}
+- Teléfono: ${productData.artisanPhone || 'No proporcionado'}
+- Historia: ${productData.artisanStory || 'No proporcionada'}
+
+INFORMACIÓN ADICIONAL:
+${productData.additionalInfo || 'No proporcionada'}
+
+ENVIADO POR:
+- Usuario: ${productData.submittedBy}
+- Email: ${productData.submittedEmail}
+- Fecha: ${new Date(productData.submittedDate).toLocaleString('es-ES')}
+      `;
+
+      // Create mailto link
+      const mailtoLink = `mailto:info@yanapanakunchik.com?subject=Nuevo Producto: ${encodeURIComponent(productData.name)}&body=${encodeURIComponent(emailBody)}`;
+      
+      // Open email client
+      window.open(mailtoLink);
+    }
+
+    function showSendProductSuccess() {
+      const successDiv = document.createElement('div');
+      successDiv.className = 'send-product-success';
+      successDiv.innerHTML = `
+        <div class="success-content">
+          <span class="success-icon">✅</span>
+          <h3>¡Producto enviado exitosamente!</h3>
+          <p>Hemos abierto tu cliente de correo electrónico. Por favor, envía el correo para completar el proceso.</p>
+          <p>Te contactaremos pronto para evaluar tu producto.</p>
+        </div>
+      `;
+      
+      document.body.appendChild(successDiv);
+      setTimeout(() => successDiv.classList.add('show'), 50);
+      
+      setTimeout(() => {
+        successDiv.classList.remove('show');
+        setTimeout(() => successDiv.remove(), 300);
+      }, 5000);
+    }
+
+    function handleImagePreview(e) {
+      const files = e.target.files;
+      const preview = document.getElementById('image-preview');
+      preview.innerHTML = '';
+      
+      if (files.length > 5) {
+        alert('Máximo 5 imágenes permitidas');
+        e.target.value = '';
+        return;
+      }
+      
+      Array.from(files).forEach((file, index) => {
+        if (index >= 5) return;
+        
+        if (!file.type.startsWith('image/')) {
+          alert('Solo se permiten archivos de imagen');
+          return;
+        }
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.className = 'preview-image';
+          preview.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
     // Enhanced form submission
     document.addEventListener('DOMContentLoaded', function() {
       const loginForm = document.getElementById('login-form');
@@ -471,15 +909,17 @@
             
             if (users.length > 0) {
               // Login successful
-              sessionStorage.setItem('user', JSON.stringify(users[0]));
+              const rememberMe = document.getElementById('remember-me-tienda').checked;
+              if (rememberMe) {
+                  localStorage.setItem('user', JSON.stringify(users[0]));
+              } else {
+                  sessionStorage.setItem('user', JSON.stringify(users[0]));
+              }
+              
               showLoginSuccess('Inicio de sesión exitoso');
               closeLoginModal();
               
-              // Update UI to show logged in state
-              const authActions = document.getElementById('auth-actions');
-              if (authActions) authActions.style.display = 'none';
-              
-              // You might want to show user info or redirect
+              // Reload to update UI
               setTimeout(() => {
                 window.location.reload();
               }, 1000);
@@ -492,8 +932,41 @@
           }
         });
       }
+
+      // Cookie Consent Logic
+      const consentBanner = document.getElementById('cookie-consent-banner');
+      if (consentBanner) {
+        const acceptBtn = document.getElementById('accept-cookies');
+        const rejectBtn = document.getElementById('reject-cookies');
+        const cookieConsent = localStorage.getItem('cookieConsent');
+
+        if (!cookieConsent) {
+          setTimeout(() => {
+            consentBanner.classList.add('show');
+          }, 1500);
+        }
+
+        acceptBtn.addEventListener('click', () => {
+          localStorage.setItem('cookieConsent', 'accepted');
+          consentBanner.classList.remove('show');
+        });
+
+        rejectBtn.addEventListener('click', () => {
+          localStorage.setItem('cookieConsent', 'rejected');
+          consentBanner.classList.remove('show');
+        });
+      }
     });
   </script>
   <script src="auth.js"></script>
+  <script src="protection.js"></script>
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-consent-banner" id="cookie-consent-banner">
+    <p>Utilizamos cookies para la funcionalidad de "Recordarme". Al aceptar, consientes su uso.</p>
+    <div class="buttons">
+      <button class="accept-btn" id="accept-cookies">Aceptar</button>
+      <button class="reject-btn" id="reject-cookies">Rechazar</button>
+    </div>
+  </div>
 </body>
 </html>

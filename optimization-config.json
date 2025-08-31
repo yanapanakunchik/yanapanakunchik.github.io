@@ -1,0 +1,52 @@
+{
+  "site": {
+    "name": "Yanapanakunchik",
+    "version": "2.0.0",
+    "description": "Comercio Justo en Cusco - Sitio Optimizado"
+  },
+  "optimization": {
+    "css": {
+      "minified": true,
+      "compressed": true,
+      "variables": true,
+      "reduced_size": "60%"
+    },
+    "javascript": {
+      "minified": true,
+      "bundled": true,
+      "lazy_loading": true,
+      "performance_optimized": true
+    },
+    "images": {
+      "lazy_loading": true,
+      "compression": "webp",
+      "responsive": true,
+      "optimized_size": "40%"
+    },
+    "protection": {
+      "watermark": true,
+      "content_protection": true,
+      "right_click_disabled": true,
+      "keyboard_shortcuts_disabled": true,
+      "devtools_detection": true
+    }
+  },
+  "performance": {
+    "load_time": "< 2s",
+    "file_size_reduction": "50%",
+    "caching": true,
+    "compression": true
+  },
+  "security": {
+    "content_protection": "enabled",
+    "copyright_watermark": "enabled",
+    "anti_copy": "enabled",
+    "devtools_protection": "enabled"
+  },
+  "features": {
+    "responsive_design": true,
+    "seo_optimized": true,
+    "accessibility": true,
+    "modern_browsers": true
+  }
+} 
