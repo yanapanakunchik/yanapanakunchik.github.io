@@ -58,11 +58,27 @@
     }
   </style>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <!-- 
-    PASO 1: Aquí pegarías el código principal que te da Google AdSense.
-    Suele ser un script que se carga de forma asíncrona.
-    Ejemplo: <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
-  -->
+  // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyC-D9Q9n2Qj_ZDTdcVeXdM9JAfSgxq-ZCQ",
+  authDomain: "yanapanakunchik-dee0d.firebaseapp.com",
+  projectId: "yanapanakunchik-dee0d",
+  storageBucket: "yanapanakunchik-dee0d.firebasestorage.app",
+  messagingSenderId: "1019591217616",
+  appId: "1:1019591217616:web:4f2b347fbacecd56cfa9d5",
+  measurementId: "G-C52D96VSCM"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 </head>
 <body>
   <header class="site-header">
@@ -108,7 +124,7 @@
         <div class="objetivo-content">
           <div class="objetivo-text">
             <h3>Misión y Visión</h3>
-            <p>Nuestra misión es crear un puente directo entre los talentosos emprendedores del Cusco y tú. Buscamos eliminar intermediarios para asegurar un pago justo y un desarrollo sostenible para las comunidades productoras. Creemos en un comercio que respeta la cultura, la tradición y el medio ambiente.</p>
+            <p>Nuestra misión es crear un puente directo entre los talentosos emprendedores del Cusco y tú. Buscamos eliminar intermediarios para asegurar un pago justo y un desarrollo sostenible para los grandes emprendedores de todo cusco. Creemos en un comercio que respeta la cultura, la tradición y el medio ambiente.</p>
             <div style="margin-top: 2rem;">
               <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
                 <div style="background: var(--hero-gradient); color: white; padding: 1rem; border-radius: var(--radius); flex: 1; text-align: center;">
@@ -268,7 +284,7 @@
             <p style="opacity: 0.9; font-size: 0.9rem;">De nuestros clientes</p>
           </div>
           <div class="stat-card" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 2.5rem 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.2);">
-            <div style="font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">3</div>
+            <div style="font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">1</div>
             <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Años</h4>
             <p style="opacity: 0.9; font-size: 0.9rem;">Transformando vidas</p>
           </div>
@@ -330,7 +346,7 @@
               <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--hero-gradient); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">A</div>
               <div>
                 <h5 style="margin: 0; color: var(--primary-color);">Ana García</h5>
-                <p style="margin: 0; font-size: 0.9rem; color: var(--text-light);">Cliente desde 2022</p>
+                <p style="margin: 0; font-size: 0.9rem; color: var(--text-light);">Cliente desde 2025</p>
               </div>
             </div>
           </div>
@@ -369,11 +385,11 @@
     <div class="container">
       <h2>Comunícate con Nosotros</h2>
       <p>¿Interesado en nuestros productos o en apoyar nuestra causa? Contáctanos.</p>
-      <p>Email: <a href="mailto:info@yanapanakunchik.com">info@yanapanakunchik.com</a> | Teléfono: +51 987 654 321</p>
+      <p>Email: <a href="mailto:anapanakunchik@gmail.com">yanapanakunchik@gmail.com</a> | Teléfono: +51 987 654 321</p>
       <p><a href="contacto.html" class="cta-button" style="display: inline-block; margin-top: 1rem;">Ver Página de Contacto Completa</a></p>
       
       <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #ddd; text-align: center;">
-        <p>&copy; 2024 Yanapanakunchik. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Yanapanakunchik. Todos los derechos reservados.</p>
         <p>Comercio Justo y Sostenible en Cusco, Perú</p>
         <div style="margin-top: 1rem;">
           <a href="politica-privacidad.html" style="color: #666; text-decoration: none; margin: 0 1rem;">Política de Privacidad</a>

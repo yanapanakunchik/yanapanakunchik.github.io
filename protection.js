@@ -4,7 +4,7 @@
     
     // Configuración de la marca de agua
     const watermarkConfig = {
-        text: '© 2024 Yanapanakunchik - Comercio Justo Cusco',
+        text: '© 2025 Yanapanakunchik - Comercio Justo Cusco',
         position: 'bottom-right',
         opacity: 0.8,
         fontSize: '12px',
